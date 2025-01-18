@@ -1,0 +1,15 @@
+networks:
+  datastream:
+
+services:
+  dev-app:
+    env_file:
+      - .env
+    build: .
+    ports:
+      - "8070:8050"
+    volumes:
+      - ./app:/app
+    networks:
+      - datastream
+    restart: always
