@@ -15,8 +15,8 @@ services:
   #   restart: always
 
   prod-app:
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     pull_policy: build
     build:
       context: .
