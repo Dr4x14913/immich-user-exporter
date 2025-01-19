@@ -2,21 +2,22 @@ networks:
   datastream:
 
 services:
-  dev-app:
-    env_file:
-      - .env
-    build: .
-    ports:
-      - "8070:8050"
-    volumes:
-      - ./app:/app
-    networks:
-      - datastream
-    restart: always
+  # dev-app:
+  #   env_file:
+  #     - .env
+  #   build: .
+  #   ports:
+  #     - "8070:8050"
+  #   volumes:
+  #     - ./app:/app
+  #   networks:
+  #     - datastream
+  #   restart: always
 
   prod-app:
     env_file:
       - .env
+    pull_policy: build
     build:
       context: .
       dockerfile: prod.Dockerfile
