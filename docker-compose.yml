@@ -23,8 +23,4 @@ services:
       dockerfile: prod.Dockerfile
     ports:
       - "8070:8050"
-    volumes:
-      - ./app:/app
-    networks:
-      - datastream
     restart: always
