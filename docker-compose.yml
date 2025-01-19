@@ -13,3 +13,17 @@ services:
     networks:
       - datastream
     restart: always
+
+  prod-app:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
+    ports:
+      - "8070:8050"
+    volumes:
+      - ./app:/app
+    networks:
+      - datastream
+    restart: always

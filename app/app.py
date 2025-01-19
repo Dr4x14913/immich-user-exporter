@@ -49,7 +49,7 @@ def update_metrics():
             videos_gauge.labels(user_name=user_name).set(user.get('videos', 0))
             usage_gauge.labels(user_name=user_name).set(user.get('usage', 0))
             quota_gauge.labels(user_name=user_name).set(user.get('quotaSizeInBytes', 0) or 0)
-#
+
 @app.route("/")
 def current_time():
     now = datetime.now()
@@ -59,11 +59,9 @@ def current_time():
 @app.route('/metrics')
 def metrics():
     """Expose Prometheus metrics."""
-    print("gfgg", flush=True)
     update_metrics()
     return Response(generate_latest(registry), mimetype='text/plain')
 
 if __name__ == '__main__':
-    print("jj", flush=True)
     app.run(host='0.0.0.0', debug=True, port=8050)
 

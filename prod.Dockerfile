@@ -8,13 +8,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
 COPY app /app
-COPY ./zoho_api.json /
 
 # Set working directory
 WORKDIR /app
 
-# Expose the application port
-EXPOSE 8050
-
 # Start the app
-CMD ["gunicorn", "wsgi:application", "-c", "gunicorn.py"]
+CMD ["gunicorn", "-c", "/app/gunicorn.py", "app:app"]
